@@ -23,23 +23,6 @@ import java.util.Iterator;
  */
 public abstract class AbstractSet<E> implements ISet<E> {
 
-    /* DELETE THIS COMMENT FROM YOUR SUBMISSION.
-     *
-     * RECALL:
-     *
-     * NO INSTANCE VARIABLES ALLOWED.
-     *
-     * NO DIRECT REFERENCE TO UnsortedSet OR SortedSet ALLOWED.
-     * (In other words the data types UnsortedSet and SortedSet
-     * will not appear anywhere in this class.)
-     *
-     * NO DIRECT REFERENCES to ArrayList or other Java Collections.
-     *
-     * NO METHODS ADDED other than those in ISet and Object.
-     */
-
-    
-
     /**
      * Return a String version of this set. 
      * Format is (e1, e2, ... en)
@@ -166,7 +149,7 @@ public abstract class AbstractSet<E> implements ISet<E> {
     public boolean equals(Object other) {
         if (other instanceof ISet) {
             Iset<E> otherSet = (ISet)(other);
-            return this.containsAll(otherSet);
+            return this.containsAll(otherSet) && otherSet.containsAll(this);
         }
     }
     
