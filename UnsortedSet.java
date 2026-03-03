@@ -29,4 +29,25 @@ public class UnsortedSet<E> extends AbstractSet<E> {
 
     private ArrayList<E> myCon;
 
+    /*
+    private class AbstractSetIterator implements Iterator<E> {
+
+        private int indexOfNext;
+        private boolean canRemove;
+
+        public boolean hasNext() {
+            return indexOfNext < size();
+        }
+
+        public E next() {
+            if (!hasNext()) {
+
+            }
+            return 
+        }
+
+
+    }
+    */
+
 }
