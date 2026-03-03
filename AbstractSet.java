@@ -32,7 +32,6 @@ public abstract class AbstractSet<E> implements ISet<E> {
         StringBuilder result = new StringBuilder();
         String seperator = ", ";
         result.append("(");
-
         Iterator<E> it = this.iterator();
         while (it.hasNext()) {
             result.append(it.next());
@@ -42,7 +41,6 @@ public abstract class AbstractSet<E> implements ISet<E> {
         if (this.size() > 0) {
             result.setLength(result.length() - seperator.length());
         }
-
         result.append(")");
         return result.toString();
     }
