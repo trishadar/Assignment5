@@ -63,6 +63,57 @@ public abstract class AbstractSet<E> implements ISet<E> {
         result.append(")");
         return result.toString();
     }
+    /**
+     * Determine if item is in this set.
+     * <br>pre: item != null
+     * @param item element whose presence is being tested.
+     * Item may not equal null.
+     * @return true if this set contains the specified item, false otherwise.
+     */
+    
+        public boolean contains(E obj) {
+        for (E val : this) {
+            if (val.equals(obj)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Determine if all of the elements of otherSet are in this set.
+     * <br> pre: otherSet != null
+     * @param otherSet != null
+     * @return true if this set contains all of the elements in otherSet,
+     * false otherwise.
+     */
+    
+    public boolean containsAll(ISet<E> otherSet) {
+        for (E val : otherSet) {
+            if(!this.contains(val)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /**
+     * A union operation. Add all items of otherSet that
+     * are not already present in this set to this set.
+     * @param otherSet != null
+     * @return true if this set changed as a result of this operation,
+     * false otherwise.
+     */Ï
+    
+    public boolean addAll(ISet<E> otherSet) {
+        boolean isChanged = false;
+        for (E val : otherSet) {
+            if (this.add(val)) {
+                isChanged = true;
+            }
+        }
+        return isChanged;
+    }
 
     /**
      * Return the number of elements of this set.
@@ -119,4 +170,5 @@ public abstract class AbstractSet<E> implements ISet<E> {
         }
     }
     
+
 }
