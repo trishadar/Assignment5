@@ -29,8 +29,8 @@ public class UnsortedSet<E> extends AbstractSet<E> {
 
     private ArrayList<E> myCon;
 
-    /*
-    private class AbstractSetIterator implements Iterator<E> {
+    
+    private class UnsortedSetIterator implements Iterator<E> {
 
         private int indexOfNext;
         private boolean canRemove;
@@ -41,13 +41,23 @@ public class UnsortedSet<E> extends AbstractSet<E> {
 
         public E next() {
             if (!hasNext()) {
-
+                throw new NoSuchElementException("Violates precondition" + 
+                "hasNext() == true");
             }
-            return 
+            canRemove = true;
+            return myCon.get(indexOfNext++);
         }
 
+        public void remove() {
+            if (!canRemove) {
+                throw new IllegalStateException("Violates precondition" + 
+                "canRemove == true");
+            }
+            myCon.remove(indexOfNext - 1)
+            canRemove = false;
+        }
 
     }
-    */
+    
 
 }
