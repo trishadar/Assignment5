@@ -23,6 +23,23 @@ import java.util.Iterator;
  */
 public abstract class AbstractSet<E> implements ISet<E> {
 
+    /* DELETE THIS COMMENT FROM YOUR SUBMISSION.
+     *
+     * RECALL:
+     *
+     * NO INSTANCE VARIABLES ALLOWED.
+     *
+     * NO DIRECT REFERENCE TO UnsortedSet OR SortedSet ALLOWED.
+     * (In other words the data types UnsortedSet and SortedSet
+     * will not appear anywhere in this class.)
+     *
+     * NO DIRECT REFERENCES to ArrayList or other Java Collections.
+     *
+     * NO METHODS ADDED other than those in ISet and Object.
+     */
+
+    
+
     /**
      * Return a String version of this set. 
      * Format is (e1, e2, ... en)
@@ -86,7 +103,7 @@ public abstract class AbstractSet<E> implements ISet<E> {
      * @param otherSet != null
      * @return true if this set changed as a result of this operation,
      * false otherwise.
-     */Ï
+     */
     
     public boolean addAll(ISet<E> otherSet) {
         boolean isChanged = false;
@@ -130,12 +147,15 @@ public abstract class AbstractSet<E> implements ISet<E> {
      * false otherwise
      */
     public boolean remove(E item) {
+        boolean isChanged = false;
         Iterator<E> it = this.iterator();
         while (it.hasNext()) {
             if (it.next().equals(item)) {
                 it.remove();
+                isChanged = true;
             }
         }
+        return isChanged;
     }
 
     /**
@@ -148,9 +168,10 @@ public abstract class AbstractSet<E> implements ISet<E> {
      */
     public boolean equals(Object other) {
         if (other instanceof ISet) {
-            Iset<E> otherSet = (ISet)(other);
-            return this.containsAll(otherSet) && otherSet.containsAll(this);
+            ISet<E> otherSet = (ISet)(other);
+            return this.containsAll(otherSet);
         }
+        return false;
     }
     
 
