@@ -169,7 +169,7 @@ public abstract class AbstractSet<E> implements ISet<E> {
     public boolean equals(Object other) {
         if (other instanceof ISet) {
             ISet<E> otherSet = (ISet)(other);
-            return this.containsAll(otherSet);
+            return this.containsAll(otherSet) && otherSet.containsAll(this);
         }
         return false;
     }

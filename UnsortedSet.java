@@ -31,6 +31,23 @@ public class UnsortedSet<E> extends AbstractSet<E> {
 
     private ArrayList<E> myCon;
 
+    /**
+     * Return the number of elements of this set.
+     * pre: none
+     * @return the number of items in this set
+     */
+    public int size() {
+        return myCon.size();
+    }
+    
+    /**
+     * Return an Iterator object for the elements of this set.
+     * pre: none
+     * @return an Iterator object for the elements of this set
+     */
+    public Iterator<E> iterator() {
+        return new UnsortedSetIterator();
+    }
     
     private class UnsortedSetIterator implements Iterator<E> {
 
