@@ -17,6 +17,7 @@
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.IllegalStateException;
 
 /**
  * A simple implementation of an ISet.
