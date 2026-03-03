@@ -23,23 +23,6 @@ import java.util.Iterator;
  */
 public abstract class AbstractSet<E> implements ISet<E> {
 
-    /* DELETE THIS COMMENT FROM YOUR SUBMISSION.
-     *
-     * RECALL:
-     *
-     * NO INSTANCE VARIABLES ALLOWED.
-     *
-     * NO DIRECT REFERENCE TO UnsortedSet OR SortedSet ALLOWED.
-     * (In other words the data types UnsortedSet and SortedSet
-     * will not appear anywhere in this class.)
-     *
-     * NO DIRECT REFERENCES to ArrayList or other Java Collections.
-     *
-     * NO METHODS ADDED other than those in ISet and Object.
-     */
-
-    
-
     /**
      * Return a String version of this set. 
      * Format is (e1, e2, ... en)
@@ -49,7 +32,6 @@ public abstract class AbstractSet<E> implements ISet<E> {
         StringBuilder result = new StringBuilder();
         String seperator = ", ";
         result.append("(");
-
         Iterator<E> it = this.iterator();
         while (it.hasNext()) {
             result.append(it.next());
@@ -59,19 +41,19 @@ public abstract class AbstractSet<E> implements ISet<E> {
         if (this.size() > 0) {
             result.setLength(result.length() - seperator.length());
         }
-
         result.append(")");
         return result.toString();
     }
+
     /**
      * Determine if item is in this set.
      * <br>pre: item != null
      * @param item element whose presence is being tested.
      * Item may not equal null.
      * @return true if this set contains the specified item, false otherwise.
+     * Big O: O(N)
      */
-    
-        public boolean contains(E obj) {
+    public boolean contains(E obj) {
         for (E val : this) {
             if (val.equals(obj)) {
                 return true;
@@ -86,8 +68,8 @@ public abstract class AbstractSet<E> implements ISet<E> {
      * @param otherSet != null
      * @return true if this set contains all of the elements in otherSet,
      * false otherwise.
+     * Big O: O(N^2)
      */
-    
     public boolean containsAll(ISet<E> otherSet) {
         for (E val : otherSet) {
             if(!this.contains(val)) {
@@ -103,8 +85,8 @@ public abstract class AbstractSet<E> implements ISet<E> {
      * @param otherSet != null
      * @return true if this set changed as a result of this operation,
      * false otherwise.
+     * Big O: O(N^2)
      */
-    
     public boolean addAll(ISet<E> otherSet) {
         boolean isChanged = false;
         for (E val : otherSet) {
@@ -119,6 +101,7 @@ public abstract class AbstractSet<E> implements ISet<E> {
      * Return the number of elements of this set.
      * pre: none
      * @return the number of items in this set
+     * Big O: O(N)
      */
     public int size() {
         int size = 0;
@@ -132,10 +115,13 @@ public abstract class AbstractSet<E> implements ISet<E> {
      * Make this set empty.
      * <br>pre: none
      * <br>post: size() = 0
+     * Big O: O(N)
      */
     public void clear() {
-        for (E val : this) {
-            remove(val);
+        Iterator<E> it = this.iterator();
+        while (it.hasNext()) {
+            it.next();
+            it.remove();
         }
     }
 
@@ -145,6 +131,7 @@ public abstract class AbstractSet<E> implements ISet<E> {
      * @param item the item to remove from the set. item may not equal null.
      * @return true if this set changed as a result of this operation,
      * false otherwise
+     * Big O: O(N)
      */
     public boolean remove(E item) {
         boolean isChanged = false;
@@ -165,6 +152,7 @@ public abstract class AbstractSet<E> implements ISet<E> {
      * <br>pre: none
      * @param other the object to compare to this set
      * @return true if other is a Set and has the same elements as this set
+     * Big O: O(N^2)
      */
     public boolean equals(Object other) {
         if (other instanceof ISet) {
