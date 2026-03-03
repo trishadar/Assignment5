@@ -16,6 +16,8 @@
 
 import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
+import java.util.IllegalStateException;
 
 /**
  * In this implementation of the ISet interface the elements in the Set are
