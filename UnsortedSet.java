@@ -48,7 +48,7 @@ public class UnsortedSet<E> extends AbstractSet<E> {
      * Big O: O(1)
      */
     public Iterator<E> iterator() {
-        return new UnsortedSetIterator();
+        return myCon.iterator();
     }
     
     /**
