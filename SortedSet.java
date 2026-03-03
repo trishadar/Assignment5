@@ -1,3 +1,4 @@
+
 /*
  * SortedSet.java - CS 314 Assignment 7
  *
@@ -91,7 +92,7 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet<E> {
                 throw new IllegalStateException("Violates precondition" + 
                 "canRemove == true");
             }
-            myCon.remove(indexOfNext - 1)
+            myCon.remove(indexOfNext - 1);
             canRemove = false;
         }
 
