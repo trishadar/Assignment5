@@ -69,33 +69,4 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet<E> {
 
     }
 
-    private class SortedSetIterator implements Iterator<E> {
-
-        private int indexOfNext;
-        private boolean canRemove;
-
-        public boolean hasNext() {
-            return indexOfNext < size();
-        }
-
-        public E next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException("Violates precondition" + 
-                "hasNext() == true");
-            }
-            canRemove = true;
-            return myCon.get(indexOfNext++);
-        }
-
-        public void remove() {
-            if (!canRemove) {
-                throw new IllegalStateException("Violates precondition" + 
-                "canRemove == true");
-            }
-            myCon.remove(indexOfNext - 1);
-            canRemove = false;
-        }
-
-    }
-
 }

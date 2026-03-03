@@ -35,6 +35,7 @@ public class UnsortedSet<E> extends AbstractSet<E> {
      * Return the number of elements of this set.
      * pre: none
      * @return the number of items in this set
+     * Big O: O(1)
      */
     public int size() {
         return myCon.size();
@@ -44,43 +45,19 @@ public class UnsortedSet<E> extends AbstractSet<E> {
      * Return an Iterator object for the elements of this set.
      * pre: none
      * @return an Iterator object for the elements of this set
+     * Big O: O(1)
      */
     public Iterator<E> iterator() {
         return new UnsortedSetIterator();
     }
     
-    private class UnsortedSetIterator implements Iterator<E> {
-
-        private int indexOfNext;
-        private boolean canRemove;
-
-        public boolean hasNext() {
-            return indexOfNext < size();
-        }
-
-        public E next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException("Violates precondition" + 
-                "hasNext() == true");
-            }
-            canRemove = true;
-            return myCon.get(indexOfNext++);
-        }
-
-        public void remove() {
-            if (!canRemove) {
-                throw new IllegalStateException("Violates precondition" + 
-                "canRemove == true");
-            }
-            myCon.remove(indexOfNext - 1);
-            canRemove = false;
-        }
     /**
      * Add an item to this set.
      * <br> item != null
      * @param item the item to be added to this set. item may not equal null.
      * @return true if this set changed as a result of this operation,
      * false otherwise.
+     * Big O: O(N)
      */
     public boolean add(E item) {
         boolean isChanged = false;
@@ -90,8 +67,5 @@ public class UnsortedSet<E> extends AbstractSet<E> {
         }
         return isChanged;
     }
-
-    }
     
-
 }
