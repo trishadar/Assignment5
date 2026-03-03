@@ -16,6 +16,7 @@
 
 import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 /**
  * A simple implementation of an ISet.
@@ -53,9 +54,24 @@ public class UnsortedSet<E> extends AbstractSet<E> {
                 throw new IllegalStateException("Violates precondition" + 
                 "canRemove == true");
             }
-            myCon.remove(indexOfNext - 1)
+            myCon.remove(indexOfNext - 1);
             canRemove = false;
         }
+    /**
+     * Add an item to this set.
+     * <br> item != null
+     * @param item the item to be added to this set. item may not equal null.
+     * @return true if this set changed as a result of this operation,
+     * false otherwise.
+     */
+    public boolean add(E item) {
+        boolean isChanged = false;
+        if(!contains(item)) {
+            myCon.add(item);
+            isChanged = true;
+        }
+        return isChanged;
+    }
 
     }
     
